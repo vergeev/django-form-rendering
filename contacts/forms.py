@@ -1,12 +1,11 @@
 from django import forms
 
 class ContactForm(forms.Form):
-    name = forms.CharField(max_length=30, required=False)
-    email = forms.EmailField(max_length=254, required=False)
+    name = forms.CharField(max_length=30)
+    email = forms.EmailField(max_length=254)
     message = forms.CharField(
         max_length=2000,
         widget=forms.Textarea(),
-        required=False,
         help_text='Write your message here!'
     )
 

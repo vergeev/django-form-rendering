@@ -5,7 +5,9 @@
 <body>
 <form method="post" novalidate>
   {% csrf_token %}
-  {{ form }}
+  <table border="1">
+    {{ form.as_table }}
+  </table>
   <button type="submit">Submit</button>
 </form>
 </body>
