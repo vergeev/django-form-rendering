@@ -1,6 +1,8 @@
+{% load widget_tweaks %}
 <DOCTYPE html>
 <head>
-    <title>Example</title>
+  <meta charset="utf-8">
+  <title>Example</title>
 </head>
 <body>
 <form method="post" novalidate>
@@ -12,27 +14,16 @@
   {{ form.source }}
 
   <table border="1">
-    <tr>
-      <th>{{ form.name.label_tag }}</th>
-      <td>
-        {{ form.name.errors }}
-        {{ form.name }}
-      </td>
-    </tr>
-    <tr>
-      <th>{{ form.email.label_tag }}</th>
-      <td>
-        {{ form.email.errors }}
-        {{ form.email }}
-      </td>
-    </tr>
-    <tr>
-      <th>{{ form.message.label_tag }}</th>
-      <td>
-        {{ form.message.errors }}
-        {{ form.message }}
-      </td>
-    </tr>
+    {% for field in form.visible_fields %}
+      <tr>
+        <th>{{ field.label_tag }}</th>
+        <td>
+          {{ field.errors }}
+          {% render_field field style="border: 2px dashed red;" placeholder=field.name %}
+          {{ field.help_text }}
+        </td>
+      </tr>
+    {% endfor %}
   </table>
   <button type="submit">Submit</button>
 </form>
